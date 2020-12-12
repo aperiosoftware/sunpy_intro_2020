@@ -38,8 +38,8 @@ files = gcwd("??-*.ipynb")
 
 for afile in files:
     print(f'Processing {afile}')
-    afile = Path(*afile.parts[1:])
-    target_file = target_dir/afile
+    tfile = Path(*afile.parts[1:])
+    target_file = target_dir/tfile
     target_file.parent.mkdir(parents=True, exist_ok=True)
     process_notebook(afile, target_file, strip_input=True)
     instructor_name = str(afile.name).replace(".ipynb", "_instructor.ipynb")
@@ -55,8 +55,8 @@ for ext in ("svg", "png", "jpg", "py", "fits.gz", "csv", "tbl", "fits"):
     for afile in images:
         if any([excf in str(afile) for excf in exclude_files]):
             continue
-        afile = Path(*afile.parts[1:])
-        target_file = target_dir/afile
+        tfile = Path(*afile.parts[1:])
+        target_file = target_dir/tfile
         cp @(afile) @(target_file)
 
 if "--no-git" not in $ARGS:
