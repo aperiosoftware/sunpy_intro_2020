@@ -1,3 +1,4 @@
 sunpy[all]
 reproject
 jplephem
+ipympl
