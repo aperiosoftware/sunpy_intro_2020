@@ -7,6 +7,8 @@ To be able to run these notebooks install the following packages with conda:
 * jupyterlab
 * reproject
 
+If you can't get it running locally you can use an online version hosted by [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aperiosoftware/sunpy_intro_2020/HEAD?filepath=index.ipynb)
+
 
 License
 -------
