@@ -61,6 +61,6 @@ for ext in ("svg", "png", "jpg", "py", "fits.gz", "csv", "tbl", "fits"):
 
 if "--git" in $ARGS:
     cd @(target_dir)
-    git checkout main
+    git checkout master
     git add .
     git commit -m "update notebooks"
