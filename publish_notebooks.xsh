@@ -19,10 +19,12 @@ from preprocess_notebooks import process_notebook
 
 current_dir = Path("./")
 originals_dir = Path("./originals")
-target_dir = Path("./notebooks")
+target_dir = Path("./")
 
 old_files = itertools.chain(target_dir.rglob("*.ipynb"), target_dir.rglob("*.py"))
 for file in old_files:
+    if file.name == "preprocess_notebooks.py":
+        continue
     rm @(file)
 
 
@@ -59,7 +61,7 @@ for ext in ("svg", "png", "jpg", "py", "fits.gz", "csv", "tbl", "fits"):
         target_file = target_dir/tfile
         cp @(afile) @(target_file)
 
-if "--no-git" not in $ARGS:
+if "--git" in $ARGS:
     cd @(target_dir)
     git add .
     git commit -m "update notebooks"
