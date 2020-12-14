@@ -21,9 +21,11 @@ current_dir = Path("./")
 originals_dir = Path("./originals")
 target_dir = Path("./")
 
+exclude_files = ("preprocess_notebooks.py",)
+
 old_files = itertools.chain(target_dir.rglob("*.ipynb"), target_dir.rglob("*.py"))
 for file in old_files:
-    if file.name == "preprocess_notebooks.py":
+    if file.is_relative_to(originals_dir) or file.name in exclude_files:
         continue
     rm @(file)
 
@@ -48,10 +50,6 @@ for afile in files:
     process_notebook(afile, target_file.with_name(instructor_name), strip_input=False)
 
 # Copy arbitary files
-exclude_files = ("preprocess_notebooks.py",)
-
-mkdir -p notebooks/data
-
 for ext in ("svg", "png", "jpg", "py", "fits.gz", "csv", "tbl", "fits"):
     images = gcwd(f"*.{ext}")
     for afile in images:
@@ -63,9 +61,6 @@ for ext in ("svg", "png", "jpg", "py", "fits.gz", "csv", "tbl", "fits"):
 
 if "--git" in $ARGS:
     cd @(target_dir)
+    git checkout main
     git add .
     git commit -m "update notebooks"
-    git push
-    cd ../
-    git add @(target_dir)
-    git commit -m "update published notebooks"
