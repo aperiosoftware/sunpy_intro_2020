@@ -19,7 +19,7 @@ from preprocess_notebooks import process_notebook
 
 current_dir = Path("./")
 originals_dir = Path("./originals")
-target_dir = Path("./notebooks")
+target_dir = Path("./")
 
 old_files = itertools.chain(target_dir.rglob("*.ipynb"), target_dir.rglob("*.py"))
 for file in old_files:
