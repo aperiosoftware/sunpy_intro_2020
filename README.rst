@@ -1,5 +1,5 @@
-Introduction to SunPy for PredSci
-=================================
+Introduction to SunPy for PSI
+=============================
 
 To be able to run these notebooks install the following packages with conda:
 
