@@ -49,6 +49,10 @@ for afile in files:
     instructor_name = str(afile.name).replace(".ipynb", "_instructor.ipynb")
     process_notebook(afile, target_file.with_name(instructor_name), strip_input=False)
 
+index_file = originals_dir / "index.ipynb"
+if index_file.exists():
+    cp @(index_file) @(target_dir)
+
 # Copy arbitary files
 for ext in ("svg", "png", "jpg", "py", "fits.gz", "csv", "tbl", "fits"):
     images = gcwd(f"*.{ext}")
