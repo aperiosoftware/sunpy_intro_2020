@@ -2,3 +2,4 @@ sunpy[all]
 reproject
 jplephem
 ipympl
+ndcube>=2.0.0b1
